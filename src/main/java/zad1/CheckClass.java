@@ -26,29 +26,25 @@ public class CheckClass {
         if (mat.matches()) {
             String[] parts = message.split("\\s+={1}\\s+");//split string into variable and value
 
-            stack.push(parts[1]);//value
 
             valVar(parts[1]);//counting value
 
-            res = (checkVar(String.valueOf(stack.pop())));//final value
+            finalVal(parts[1], checkVar(parts[1]));
 
-            variable.put(parts[0], res);//saving value with variable
+            if (res != "Error bad syntax") {
+                variable.put(parts[0], res);//saving value with variable
+                res = parts[0] + "=" + variable.get(parts[0]);
+            }
 
             stack.clear();
 
-            return parts[0] + "=" + variable.get(parts[0]); // result display
+            return res;// result display
 
         } else {//just value
 
             valVar(message);//counting value
 
-            if (stack.empty()) {//checking what was at standard input
-                if (variable.get(message) != "Error") {
-                    res = "???";
-                } else
-                    res = "Error";
-            } else
-                res = checkVar(String.valueOf(stack.pop()));//final value
+            finalVal(message, "???");
 
             stack.clear();
 
@@ -56,18 +52,32 @@ public class CheckClass {
         }
     }
 
+    private void finalVal(String value, String Error) {//checking final value for erros
+        if (stack.empty()) {
+            if (checkVar(value) != "Error") {
+                res = Error;
+            } else {
+                res = "Error";
+            }
+        } else {
+            res = (checkVar(String.valueOf(stack.pop())));//final value
+        }
+    }
+
 
     private void counter() {
 
-        count.setSign(stack.pop().toString());//get sign for calculation
-        count.setSecond(stack.pop().toString());
-        count.setFirst(stack.pop().toString());
-        stack.push(count.count());//result of calculation
-
+        if (stack.size() >= 3) {//not enough arguments
+            count.setSign(stack.pop().toString());//get sign for calculation
+            count.setSecond(stack.pop().toString());
+            count.setFirst(stack.pop().toString());
+            stack.push(count.count());//result of calculation
+        } else
+            stack.push("Error bad syntax");
     }
 
     private void valVar(String message) {
-        String[] parts = message.split("\\s");//split whole sting into single values/variables
+        String[] parts = message.split("\\s");//split whole string into single values/variables
         int cnt = 0;
         if (1 != parts.length) { //make sure this is not a assignment of value
             for (int i = ((parts.length) / 2); i > 0; i--) {//number of calculation

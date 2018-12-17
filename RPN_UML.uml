@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="162.0" y="11.0">zad1.Variable</node>
+    <node x="0.0" y="0.0">zad1.Count</node>
+    <node x="62.0" y="168.0">zad1.CheckClass</node>
+    <node x="82.5" y="446.0">zad1.Main</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="zad1.CheckClass" target="zad1.Variable">
+      <point x="26.25" y="-114.0" />
+      <point x="193.25" y="143.0" />
+      <point x="227.5" y="143.0" />
+      <point x="-65.5" y="48.0" />
+    </edge>
+    <edge source="zad1.Main" target="zad1.CheckClass">
+      <point x="42.25" y="-25.5" />
+      <point x="209.25" y="421.0" />
+      <point x="219.5" y="421.0" />
+      <point x="52.5" y="114.0" />
+    </edge>
+    <edge source="zad1.CheckClass" target="zad1.Count">
+      <point x="-26.25" y="-114.0" />
+      <point x="140.75" y="143.0" />
+      <point x="106.5" y="143.0" />
+      <point x="35.5" y="59.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="220.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
